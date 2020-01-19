@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { TextField } from "@material-ui/core";
-import { fetchNewTodo } from "../actions/";
+import { apiNewTodo } from "../actions/";
 
 export default () => {
   const dispatch = useDispatch();
@@ -10,7 +10,7 @@ export default () => {
   const newTodo = e => {
     e.preventDefault();
     if (!title.trim()) return;
-    dispatch(fetchNewTodo(title));
+    dispatch(apiNewTodo(title));
   };
 
   return (

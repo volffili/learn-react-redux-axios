@@ -1,9 +1,14 @@
 const todos = (state = [], action) => {
-  switch (action.type) {
+  const { type, payload } = action;
+  switch (type) {
     case "SET_TODOS":
-      return action.payload;
+      return payload;
     case "ADD_TODO":
-      return [...state, action.payload];
+      return [...state, payload];
+    case "DELETE_TODO":
+      return state.filter(todo => todo.id != payload);
+    case "REPLACE_TODO":
+      return state.map(todo => (todo.id == payload.id ? payload : todo));
     default:
       return state;
   }
